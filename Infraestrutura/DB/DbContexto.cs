@@ -7,6 +7,9 @@ using minimal_api.Dominio.Entidades;
 
 namespace minimal_api.Infraestrutura.DB
 {
+
+    
+
     public class DbContexto: DbContext
     {
 
@@ -20,7 +23,24 @@ namespace minimal_api.Infraestrutura.DB
 
             public DbSet<Administrador> Administradores { get; set; } = default!;
 
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Administrador>().HasData(
+
+                    new Administrador { 
+
+                        Id = 1,
+                        Email = "Administrador@test.com",
+                        Senha = "123456",
+                        Perfil = "Adm"
+
+
+                    }
+
+            );
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
 
                 if(!optionsBuilder.IsConfigured) {
