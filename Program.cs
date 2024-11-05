@@ -9,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServiço>();
 
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<DbContexto>(options => {
     options.UseMySql(
         builder.Configuration.GetConnectionString("mysql"),
@@ -33,7 +37,9 @@ app.MapPost("/login",  ([FromBody] LoginDTO loginDTO, IAdministradorServico admi
 
 });
 
+app.UseSwagger();
 
+app.UseSwaggerUI();
 
 app.Run();
 
