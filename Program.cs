@@ -71,7 +71,9 @@ app.MapPost("/veiculos",  ([FromBody] VeiculoDTO veiculoDTO, IVeiculoServico vei
    return Results.Created($"/veiculo/{veiculo.Id}", veiculo);
 
 
-}).WithTags("Veiculos");;
+}).WithTags("Veiculos");
+
+
 
 app.MapGet("/veiculos",  ([FromQuery] int? pagina, IVeiculoServico veiculoServico ) => {
 
@@ -82,7 +84,22 @@ app.MapGet("/veiculos",  ([FromQuery] int? pagina, IVeiculoServico veiculoServic
    return Results.Ok(veiculos);
 
 
-}).WithTags("Veiculos");;
+}).WithTags("Veiculos");
+
+app.MapGet("/veiculos/{id}",  ([FromRoute] int id, IVeiculoServico veiculoServico ) => {
+
+   var veiculo = veiculoServico.BuscaPorId(id);
+
+   if(veiculo == null)
+
+    return Results.NotFound();
+
+
+
+   return Results.Ok(veiculo);
+
+
+}).WithTags("Veiculos");
 
 
 #endregion
