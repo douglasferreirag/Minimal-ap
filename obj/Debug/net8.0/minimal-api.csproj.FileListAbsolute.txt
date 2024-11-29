@@ -129,3 +129,11 @@ D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\Projetos\minimal-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Projetos\minimal-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Projetos\minimal-api\obj\Debug\net8.0\minimal-api.MvcApplicationPartsAssemblyInfo.cs
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projetos\minimal-api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
