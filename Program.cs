@@ -361,7 +361,7 @@ app.MapGet("/veiculos",  ([FromQuery] int? pagina, IVeiculoServico veiculoServic
 
 
 }).RequireAuthorization()
-.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm"})
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm, Editor"})
   .WithTags("Veiculos");
 
 app.MapGet("/veiculos/{id}",  ([FromRoute] int id, IVeiculoServico veiculoServico ) => {
@@ -378,7 +378,7 @@ app.MapGet("/veiculos/{id}",  ([FromRoute] int id, IVeiculoServico veiculoServic
 
 
 }).RequireAuthorization()
-  .RequireAuthorization(new AuthorizeAttribute { Roles = "Adm, Editor"})
+  
   .WithTags("Veiculos");
 
 app.MapPut("/veiculos/{id}",  ([FromRoute] int id, VeiculoDTO veiculoDTO, IVeiculoServico veiculoServico ) => {
