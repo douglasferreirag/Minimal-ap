@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.OpenApi.Models;
 
 
 
@@ -39,9 +40,13 @@ builder.Services.AddAuthentication(option => {
 
             ValidateLifetime = true,
 
-            ValidateAudience = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
 
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+            ValidateAudience = false,
+            
+            ValidateIssuer = false
+
+            
 
 
     };
@@ -56,7 +61,41 @@ builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => {
+
+    options.AddSecurityDefinition ("Bearer", new OpenApiSecurityScheme{
+
+            Name = "Autorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "Insira o token JWT aqui"
+
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement 
+    {
+
+            {
+
+                    new OpenApiSecurityScheme {
+
+                            Reference = new OpenApiReference {
+
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+
+                    }, 
+                    
+                    new string[] {}
+
+            }
+
+    });
+
+});
 
 builder.Services.AddDbContext<DbContexto>(options => {
     options.UseMySql(
@@ -72,7 +111,7 @@ var app = builder.Build();
 
 #region  Home
 
-app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");
+app.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");
 
 #endregion
 
@@ -131,7 +170,7 @@ app.MapPost("/administradores/login",  ([FromBody] LoginDTO loginDTO, IAdministr
         return Results.Unauthorized();
 
 
-}).WithTags("Administradores");
+}).AllowAnonymous().WithTags("Administradores");
 
 
 app.MapGet("/administradores",  ([FromQuery] int? pagina, IAdministradorServico administradorServico) => {
