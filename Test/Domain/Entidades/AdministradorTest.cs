@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using minimal_api.Dominio.Entidades;
 
+
 namespace Test.Domain.Entidades
 {
+    [TestClass]
     public class AdministradorTest
     {
 
-         [TestMethod]
+        [TestMethod]
         public void TestarGetSetPropriedades()
         {
         
