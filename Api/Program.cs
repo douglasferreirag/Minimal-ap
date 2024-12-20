@@ -56,7 +56,7 @@ builder.Services.AddAuthentication(option => {
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<IAdministradorServico, AdministradorServiço>();
+builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
 
 builder.Services.AddScoped<IVeiculoServico, VeiculoServico>();
 

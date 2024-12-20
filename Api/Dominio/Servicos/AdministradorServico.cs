@@ -10,11 +10,11 @@ using minimal_api.Infraestrutura.DB;
 
 namespace minimal_api.Dominio.Servicos
 {
-    public class AdministradorServiço : IAdministradorServico
+    public class AdministradorServico : IAdministradorServico
     {
 
         private readonly DbContexto _contexto;
-        public AdministradorServiço(DbContexto contexto){
+        public AdministradorServico(DbContexto contexto){
 
             _contexto = contexto;
 
